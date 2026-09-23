@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brain Vault</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <!-- Save view -->
+  <main id="save-view" class="view">
+    <header class="top">
+      <div class="brand"><img src="icons/icon48.png" alt="" class="mark">brain vault</div>
+      <button id="open-library" class="ghost-btn" title="Library">Library</button>
+    </header>
+
+    <section class="page-card" id="page-card">
+      <div id="thumb" class="thumb" hidden>
+        <img id="thumb-img" alt="">
+        <span id="thumb-badge" class="thumb-badge" hidden>Your screenshot</span>
+      </div>
+      <div class="page-row">
+        <img id="page-favicon" class="favicon" alt="">
+        <div class="page-text">
+          <div id="page-title" class="page-title">This tab</div>
+          <div id="page-host" class="page-host"></div>
+        </div>
+        <button id="edit-url" class="link-btn" title="Save a different link">Change</button>
+      </div>
+    </section>
+    <div id="shot-bar" class="shot-bar" hidden>
+      <button id="shot-full" class="ghost-btn">Whole screen</button>
+      <button id="shot-area" class="ghost-btn">Select area</button>
+      <button id="shot-clear" class="link-btn">No screenshot</button>
+    </div>
+    <div id="shot-hint" class="shot-hint" hidden></div>
+    <input id="url-input" class="field url-field" type="url" placeholder="Paste a link" autocomplete="off" hidden>
+
+    <label class="label" for="note-input">Why are you saving this?</label>
+    <textarea id="note-input" class="field note-field" rows="3" placeholder="The empty states on this are so good…"></textarea>
+
+    <div class="label">Shelf</div>
+    <div class="chips" id="shelf-chips" role="radiogroup" aria-label="Shelf">
+      <button class="chip on" data-kind="auto" role="radio" aria-checked="true" title="Jev picks the shelf">Auto</button>
+      <button class="chip" data-kind="article" role="radio" aria-checked="false">Reading</button>
+      <button class="chip" data-kind="post" role="radio" aria-checked="false">Post</button>
+      <button class="chip" data-kind="inspiration" role="radio" aria-checked="false">Inspiration</button>
+      <button class="chip" data-kind="tool" role="radio" aria-checked="false">Tool</button>
+    </div>
+
+    <button id="save-btn" class="save-btn">
+      <span class="save-label">Save to vault</span>
+      <span class="kbd mono">⌘↵</span>
+    </button>
+
+    <!-- Status card: saving / saved / failed -->
+    <section id="status" class="status" hidden>
+      <div class="status-row">
+        <span id="status-icon" class="status-icon"></span>
+        <div class="status-text">
+          <div id="status-title" class="status-title"></div>
+          <div id="status-sub" class="status-sub"></div>
+        </div>
+      </div>
+      <img id="status-image" class="status-image" alt="" hidden>
+      <div id="status-chips" class="chips small"></div>
+      <div id="status-note" class="bubble" hidden></div>
+      <div id="status-actions" class="status-actions"></div>
+    </section>
+
+    <section class="recent">
+      <div class="section-head">
+        <span class="label">Recently saved</span>
+        <button id="see-all" class="link-btn">See all</button>
+      </div>
+      <div id="recent-list" class="rows"></div>
+    </section>
+  </main>
+
+  <!-- Library view -->
+  <main id="library-view" class="view" hidden>
+    <header class="top">
+      <button id="back-btn" class="ghost-btn back" title="Back">‹ Save</button>
+      <div class="lib-title">Library</div>
+      <span class="spacer"></span>
+    </header>
+    <input id="lib-search" class="field" type="search" placeholder="Search your vault" autocomplete="off">
+    <div class="chips" id="lib-filters"></div>
+    <div id="lib-list" class="rows"></div>
+    <div id="lib-empty" class="empty" hidden></div>
+  </main>
+
+  <footer class="foot">
+    <label class="switch">
+      <input type="checkbox" id="push-github">
+      <span class="track"><span class="knob"></span></span>
+      Publish to GitHub
+    </label>
+    <span id="helper" class="helper" title="Local helper status"><span class="dot"></span><span id="helper-text">Checking helper</span></span>
+  </footer>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>

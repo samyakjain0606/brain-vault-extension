@@ -1,0 +1,8 @@
+# Local settings and secrets
+bridge/.env
+
+# Runtime files
+bridge/server.log
+__pycache__/
+*.pyc
+.DS_Store

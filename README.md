@@ -18,7 +18,28 @@ See it in action at [samyakjain0606.github.io/brain-vault](https://samyakjain060
 
 ## Set up your own
 
-You need Chrome, Python 3.9 or newer (no packages to install), git, and a [TypeSafe API key](https://console.typesafe.ai) for Jev.
+You need three things: this extension, a GitHub repo of your own for your vault, and a small helper running on your computer. The helper sorts each save and publishes your vault.
+
+### The fast way: let Claude set it up
+
+With [Claude Code](https://claude.com/claude-code) installed, add the setup skill:
+
+```sh
+npx skills add samyakjain0606/brain-vault-extension -g
+```
+
+Then open Claude Code and say **"set up my Brain Vault"**. Claude will:
+
+- clone this repo
+- create your vault repo on GitHub and turn on GitHub Pages
+- configure the helper and start it so it runs at every login
+- walk you through the one step Chrome needs from you, and make a first save to check everything works
+
+It asks before anything public happens. The skill is in [`skills/brain-vault-setup`](skills/brain-vault-setup/SKILL.md) if you want to read what it does.
+
+### By hand
+
+You need Chrome, Python 3.9 or newer (no packages to install), git, the [GitHub CLI](https://cli.github.com) or another way to push to GitHub, and a [TypeSafe API key](https://console.typesafe.ai) for Jev.
 
 **1. Get the code**
 
@@ -47,10 +68,10 @@ Set `TYPESAFE_API_KEY`, and `BRAIN_VAULT_DIR=~/brain-vault` if your vault isn't 
 **4. Start the helper**
 
 ```sh
-python3 bridge/server.py
+bridge/install-service.sh
 ```
 
-It listens on `localhost:5128`. Keep it running while you save. The footer of the extension shows whether it's reachable.
+This starts the helper on `localhost:5128` and keeps it running, including after a restart (a LaunchAgent on macOS, a systemd user service on Linux). `bridge/install-service.sh status` checks it and `uninstall` removes it. To run it in a terminal instead, use `python3 bridge/server.py`. The footer of the extension shows whether it's reachable.
 
 **5. Load the extension.** Open `chrome://extensions`, turn on Developer mode, click *Load unpacked*, and pick this folder.
 
@@ -91,12 +112,14 @@ manifest.json, background.js    Chrome extension (Manifest V3)
 sidepanel.*                     the save panel and library
 content/select-area.js          drag-to-select overlay for screenshots
 bridge/server.py                local helper the extension talks to
+bridge/install-service.sh       keeps the helper running (macOS and Linux)
 bridge/pipeline.py              page reading, URL rules, Jev, final decision
 bridge/jev.py                   the Jev questions and how answers are read
 bridge/taxonomy.py              shelves, topics and tags
 bridge/vault.py                 vault.json and the Markdown mirror
 bridge/migrate.py               import older data, or re-sort everything
 site/                           the website that reads vault.json
+skills/brain-vault-setup/       Claude skill that sets all of this up
 ```
 
 ## License

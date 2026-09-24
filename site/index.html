@@ -12,13 +12,12 @@
 <script>
   // Edit these to make the site yours.
   window.BRAIN_VAULT = {
-    owner: "Samyak",
-    fullName: "Samyak Jain",
-    github: "samyakjain0606",
+    owner: "",       // your first name, for "Hi, I'm …"
+    fullName: "",    // shown next to your photo
+    github: "",      // your GitHub username; your GitHub photo is used as the avatar
     extensionRepo: "samyakjain0606/brain-vault-extension",
     about: [
-      "I save a lot of links and used to lose almost all of them. Bookmark folders, Notes, a dozen open tabs.",
-      "Now everything lands here with a line about why it mattered, so future me can actually use it."
+      "I save a lot of links, articles and screenshots. Each one lands here with a line about why it mattered, so future me can actually use it."
     ]
   };
 </script>
@@ -511,7 +510,7 @@
       class: o.key === shelf ? "sg on" : "sg", role: "tab", "aria-selected": String(o.key === shelf),
       onclick: () => setShelf(o.key),
     }, o.name, h("span", { class: "sgc" }, o.n))));
-    $("#count-title").textContent = `${items.length} things worth keeping.`;
+    $("#count-title").textContent = `${items.length} ${items.length === 1 ? "thing" : "things"} worth keeping.`;
   }
 
   function setShelf(key) {

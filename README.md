@@ -2,7 +2,7 @@
 
 Every good link, sorted. A Chrome extension that saves articles, tweets, X articles, and app or website inspiration with a note on why you saved it. [Jev](https://docs.typesafe.ai) sorts each save by shelf, topic and tags, and your vault publishes to your own GitHub Pages site.
 
-See mine at [samyakjain0606.github.io/brain-vault](https://samyakjain0606.github.io/brain-vault/).
+See it in action at [samyakjain0606.github.io/brain-vault](https://samyakjain0606.github.io/brain-vault/), and a real vault at [Samyak’s vault](https://samyakjain0606.github.io/brain-vault/vault.html).
 
 <p>
   <img src="docs/panel.png" alt="The Brain Vault side panel" width="300">
